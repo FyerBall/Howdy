@@ -24,6 +24,7 @@ const FooterStyled = styled.footer`
   margin: 30px auto 0;
   padding: 5rem 0;
   text-align: center;
+
   .icons {
     display: flex;
     justify-content: center;

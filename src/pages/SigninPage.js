@@ -15,7 +15,7 @@ function SigninPage() {
     password: '',
   };
 
-  const { signin, signup } = useUserContext();
+  const { signInWithGoogle, signup } = useUserContext();
 
   const [userInfo, setUserInfo] = useState(user);
   const [alert, setAlert] = useState({
@@ -63,12 +63,13 @@ function SigninPage() {
         <Title2>Sign in to Howdy</Title2>
         <p>Messaging App - Testing</p>
       </div>
+      {/* TODO: Button component didn't work for on click */}
+      <button onClick={signInWithGoogle}>
+        <FcGoogle />
+        Continue with Google
+      </button>
       <form onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} showAlert={showAlert} />}
-        <Button btnStyle=''>
-          <FcGoogle />
-          Continue with Google
-        </Button>
 
         <Title4 text='center option' underline='secondary--underline'>
           or

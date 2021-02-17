@@ -7,23 +7,10 @@ import {
 
 const user_reducer = (state, action) => {
   if (action.type === REQUEST_LOGIN) {
-    return { ...state, loading: true };
+    console.log('action log', action.payload);
+    return { ...state, user: action.payload };
   }
-  if (action.type === LOGIN_SUCCESS) {
-    return {
-      ...state,
-      user: action.payload.user,
-      token: action.payload.auth_token,
-      loading: false,
-    };
-  }
-  if (action.type === LOGIN_ERROR) {
-    return {
-      ...state,
-      loading: false,
-      errorMessage: action.error,
-    };
-  }
+
   // return state;
   throw new Error(`Unknown ${action.type} - action type `);
 };

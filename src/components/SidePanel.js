@@ -3,8 +3,11 @@ import { sideBarIcons, tempChannels } from '../util/constant';
 import Channels from './Channels';
 import Icons from './Icons';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { FiSettings } from 'react-icons/fi';
 import styled from 'styled-components';
 import { db } from '../server/firebase';
+import Avatar from '@material-ui/core/Avatar';
+import { useUserContext } from '../context/user_context';
 
 // TODO isAuth ? "Hey, name!" : "hey, stranger!" in HOME OR MAIN PANEL
 function SidePanel() {
@@ -12,6 +15,8 @@ function SidePanel() {
   // const toggleVisibility = () => setIsVisible(!isVisible);
 
   const [channels, setChannels] = useState([]);
+
+  const { user } = useUserContext();
 
   const addChannel = () => {
     const channelName = prompt('Please enter a name for your channel');
@@ -31,7 +36,7 @@ function SidePanel() {
       setChannels(
         snapshot.docs.map((doc) => ({
           id: doc.id,
-          name: doc.data().name,
+          data: doc.data(),
         }))
       )
     );
@@ -39,22 +44,14 @@ function SidePanel() {
 
   return (
     <SidePanelStyled>
-      {/* TODO: Show the first 3 then toggle show more */}
-
       <div className='top'>
-        {sideBarIcons.map((item) => (
-          <Icons
-            key={item.id}
-            item={item}
-            // isVisible={isVisible}
-            // toggleVisibility={toggleVisibility}
-          />
-        ))}
+        <Avatar alt={user?.displayName} src={user?.photoURL} />
+        <FiSettings size={23} className='setting' />
       </div>
-      <hr />
 
+      <hr />
       {channels.map((channel) => (
-        <Channels key={channel.id} name={channel.name} />
+        <Channels key={channel.id} {...channel} />
       ))}
 
       <button type='button' onClick={addChannel}>
@@ -69,14 +66,35 @@ function SidePanel() {
 }
 
 const SidePanelStyled = styled.aside`
-  background: #fefdfb;
-  background: lightblue;
+  background: var(--white);
   /* display: grid;
   align-items: center;
   justify-content: center;
   width: 220px; */
-  padding: 1rem;
+  /* padding: 0.5rem; */
   flex: 0.3;
+  margin-right: 5px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+
+    .setting {
+      cursor: pointer;
+      transition: var(--transition);
+      border-radius: 50%;
+      box-shadow: var(--dark-shadow);
+
+      &:hover {
+        color: var(--secondary-color);
+      }
+      &:active {
+        box-shadow: var(--dark-light);
+      }
+    }
+  }
 
   /* ≈ 1090px  -> width: 260px; */
   /* ≈ 900px  -> width: 240px; */

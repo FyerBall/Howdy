@@ -174,9 +174,9 @@ hr {
 }
 
 .alert {
-  width: 80%;
+  width: 100%;
   text-align: center;
-  padding: 0.1rem 0;
+  padding: 0.1rem 0.4rem;
   border-radius: 4px;
   letter-spacing: var(--spacing);
   text-transform: capitalize;

@@ -9,8 +9,8 @@ function HomePage() {
     <div>
       <Hero />
       <Features />
-      <Link to='/demo'>
-        <Button btnStyle='primary--btn-center'>Try it now</Button>
+      <Link to='/demo/'>
+        <Button classes='primary--btn-center'>Try it now</Button>
       </Link>
     </div>
   );

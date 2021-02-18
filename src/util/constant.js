@@ -62,25 +62,25 @@ export const sideBarIcons = [
   {
     id: 1,
     name: 'dashboard',
-    url: '/dashboard',
+    url: 'dashboard',
     icon: <FaDyalog />,
   },
   {
     id: 2,
     name: 'inbox',
-    url: '/inbox',
+    url: 'inbox',
     icon: <FaRegEnvelopeOpen />,
   },
   {
     id: 3,
     name: 'draft',
-    url: '/draft',
+    url: 'draft',
     icon: <RiDraftLine />,
   },
   {
     id: 4,
     name: 'files',
-    url: '/files',
+    url: 'files',
     icon: <BsFileBreak />,
   },
 ];
@@ -89,14 +89,17 @@ export const sideBarIcons = [
 export const tempChannels = [
   {
     id: 1,
-    name: 'test one',
+    name: 'Gladys',
+    last_seen: 'this morning',
   },
   {
     id: 2,
-    name: 'delete me',
+    name: 'Jordan',
+    last_seen: '4 hours ago',
   },
   {
     id: 3,
-    name: 'test 123',
+    name: 'Ritthy ',
+    last_seen: '2 days ago',
   },
 ];

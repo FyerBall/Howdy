@@ -7,12 +7,16 @@ import { Title3 } from '../Helpers/Titles';
 function ErrorPage() {
   return (
     <ErrorStyled className='section-center'>
-      <Title3 text='error__message'>
+      <Title3 classes='error__message'>
         The page you are looking for doesn't exist
       </Title3>
 
       <Link to='/'>
-        <Button btnStyle='primary--btn'>Go back home</Button>
+        <Button classes='primary--btn'>Go back home</Button>
+      </Link>
+
+      <Link to='/demo'>
+        <Button classes='primary--btn'>demo</Button>
       </Link>
     </ErrorStyled>
   );
@@ -30,6 +34,9 @@ const ErrorStyled = styled.section`
   }
   .error__message {
     margin: 2rem auto;
+  }
+  a {
+    margin-bottom: 20px;
   }
 `;
 

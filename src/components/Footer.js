@@ -6,7 +6,7 @@ import styled from 'styled-components';
 function Footer() {
   return (
     <FooterStyled className='section-center'>
-      <Title4 text='center' underline='primary--underline'>
+      <Title4 classes='center' underline='primary--underline'>
         Download the Howdy! app now
       </Title4>
       <div className='icons'>
@@ -48,7 +48,9 @@ const FooterStyled = styled.footer`
 
     &:hover {
       box-shadow: var(--light-shadow);
+      border: 1px solid var(--primary-color-light);
     }
+
     svg {
       color: var(--silver);
       font-size: 30px;

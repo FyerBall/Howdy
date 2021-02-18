@@ -1,5 +1,3 @@
-// TODO Useref for the input??
-// ? Copy past from sign up check if it needs adj.
 import React, { useState } from 'react';
 import logo from '../assets/Icon.svg';
 import { Title2, Title4 } from '../Helpers/Titles';
@@ -8,14 +6,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import Alert from '../Helpers/Alert';
-import { useUserContext } from '../context/user_context';
+
 function SigninPage() {
   let user = {
     email: '',
     password: '',
   };
-
-  const { signInWithGoogle, signup } = useUserContext();
 
   const [userInfo, setUserInfo] = useState(user);
   const [alert, setAlert] = useState({
@@ -23,6 +19,7 @@ function SigninPage() {
     message: '',
     type: '',
   });
+
   const handleChange = (e) => {
     e.preventDefault();
     const name = e.target.name;
@@ -57,21 +54,20 @@ function SigninPage() {
   };
 
   return (
-    <SignInStyled>
+    <SignupStyled>
       <div className='header'>
         <img src={logo} alt='Howdy' />
         <Title2>Sign in to Howdy</Title2>
         <p>Messaging App - Testing</p>
       </div>
-      {/* TODO: Button component didn't work for on click */}
-      <button onClick={signInWithGoogle}>
-        <FcGoogle />
-        Continue with Google
-      </button>
       <form onSubmit={handleSubmit}>
+        <Button classes=''>
+          <FcGoogle />
+          Continue with Google
+        </Button>
         {alert.show && <Alert {...alert} showAlert={showAlert} />}
 
-        <Title4 text='center option' underline='secondary--underline'>
+        <Title4 classes='center option' underline='secondary--underline'>
           or
         </Title4>
 
@@ -90,19 +86,19 @@ function SigninPage() {
           placeholder='enter your password'
         />
 
-        <Button type='submit' btnStyle='primary--btn'>
-          Sign In
+        <Button type='submit' classes='primary--btn'>
+          Sign up
         </Button>
       </form>
 
       <p>
         Don't have an account? <Link to='/signin'>Sign Up</Link>
       </p>
-    </SignInStyled>
+    </SignupStyled>
   );
 }
 
-const SignInStyled = styled.section`
+const SignupStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

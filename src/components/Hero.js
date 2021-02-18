@@ -10,7 +10,7 @@ function Hero() {
     <HeroStyled className='section-center'>
       <img src={HeroImg} alt='people texting' />
       <div className='hero'>
-        <Title1 text='hero__text'>
+        <Title1 classes='hero__text'>
           Free secure Messaging <br /> Whenever, Wherever
         </Title1>
 
@@ -21,7 +21,7 @@ function Hero() {
           Facilisis ultrices erat sit penatibus sollicitudin quam.
         </p>
         <Link to='/demo'>
-          <Button btnStyle='primary--btn'>Request a Demo</Button>
+          <Button classes='primary--btn'>Request a Demo</Button>
         </Link>
       </div>
     </HeroStyled>
@@ -29,14 +29,6 @@ function Hero() {
 }
 
 const HeroStyled = styled.main`
-  /* background: linear-gradient(
-      to top right,
-      rgba(56, 66, 81, 0.9),
-      rgba(218, 225, 249, 0.6)
-    ),
-    url(${img}) center center/cover no-repeat;
-  height: 50vh;
-  color: var(--body-color); */
   display: flex;
   align-items: center;
   flex-direction: column;

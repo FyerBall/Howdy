@@ -11,8 +11,6 @@ function MainPanel() {
 }
 
 const MainPanelStyled = styled.div`
-  flex: 0.7;
-  background-color: var(--body-color);
-  overflow: scroll;
+  background-color: #eff2f4;
 `;
 export default MainPanel;

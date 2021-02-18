@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import Alert from '../Helpers/Alert';
-import { useUserContext } from '../context/user_context';
+
 function SignupPage() {
   let user = {
     email: '',
@@ -21,7 +21,6 @@ function SignupPage() {
     type: '',
   });
 
-  const { signin, signup } = useUserContext();
   const handleChange = (e) => {
     e.preventDefault();
     const name = e.target.name;
@@ -37,7 +36,6 @@ function SignupPage() {
   const checkForm = () => {
     isEmpty();
     checkPassword();
-    signup(userInfo.email, userInfo.password);
   };
   const isEmpty = () => {
     if (!userInfo.email.length || !userInfo.password.length) {
@@ -64,13 +62,13 @@ function SignupPage() {
         <p>Messaging App - Testing</p>
       </div>
       <form onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} showAlert={showAlert} />}
-        <Button btnStyle=''>
+        <Button classes=''>
           <FcGoogle />
           Continue with Google
         </Button>
+        {alert.show && <Alert {...alert} showAlert={showAlert} />}
 
-        <Title4 text='center option' underline='secondary--underline'>
+        <Title4 classes='center option' underline='secondary--underline'>
           or
         </Title4>
 
@@ -89,7 +87,7 @@ function SignupPage() {
           placeholder='enter your password'
         />
 
-        <Button type='submit' btnStyle='primary--btn'>
+        <Button type='submit' classes='primary--btn'>
           Sign up
         </Button>
       </form>

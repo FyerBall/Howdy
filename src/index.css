@@ -190,6 +190,10 @@ hr {
   background-color: #10b981;
 }
 
+.full-hight {
+  height: var(--full-height);
+}
+
 @media (max-width: 759px) {
   h1 {
     font-size: 37px;

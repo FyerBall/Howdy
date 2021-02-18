@@ -11,7 +11,7 @@ function Card() {
         return (
           <div className='card' key={id}>
             <span className='icon'>{icon}</span>
-            <Title5 text='text'>{text}</Title5>
+            <Title5 classes='text'>{text}</Title5>
             <small className='info'>{info}</small>
           </div>
         );

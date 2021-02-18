@@ -1,14 +1,7 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from 'react';
-
-import { REQUEST_LOGIN, REQUEST_SIGNUP } from '../Actions/actions';
-
-import { auth, db, provider } from '../server/firebase';
+import React from 'react';
+import { useContext } from 'react';
+import { createContext } from 'react';
+import { useReducer } from 'react';
 
 import user_reducer from '../reducers/user_reducer';
 
@@ -21,19 +14,8 @@ const initialState = {
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(user_reducer, initialState);
 
-  const signInWithGoogle = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        dispatch({ type: REQUEST_LOGIN, payload: result.user });
-      })
-      .catch((error) => alert(error.message));
-  };
-
   return (
-    <UserContext.Provider value={{ ...state, signInWithGoogle }}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={{ ...state }}>{children}</UserContext.Provider>
   );
 };
 

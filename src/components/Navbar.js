@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../assets/Icon.svg';
 import styled from 'styled-components';
 import { navLinks } from '../util/constant';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -10,8 +10,8 @@ function Navbar() {
       <div className='logo__container'>
         <Link to='/'>
           <img src={logo} alt='Howdy' />
+          <h3 className='name'>howdy!</h3>
         </Link>
-        <h3 className='name'>howdy!</h3>
       </div>
 
       <div className='links'>
@@ -42,10 +42,12 @@ const NavStyled = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0 3rem;
+  /* margin: 0 0 3rem; */
   .logo__container {
-    display: flex;
-    align-items: center;
+    a {
+      display: flex;
+      align-items: center;
+    }
 
     img {
       margin-right: 10px;
@@ -62,8 +64,11 @@ const NavStyled = styled.nav`
     }
   }
 
-  .active {
-    color: red;
+  @media (max-width: 448px) {
+    /* TODO: Menu bar rather than flex */
+    .links {
+      flex-direction: column;
+    }
   }
 `;
 

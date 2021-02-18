@@ -1,202 +1,143 @@
-import React, { useEffect, useState } from 'react';
-import { MdAttachFile } from 'react-icons/md';
-import { RiInformationLine, RiSearch2Line } from 'react-icons/ri';
-import styled from 'styled-components';
-import { db } from '../server/firebase';
-import { Title4 } from '../Helpers/Titles';
-import Avatar from '@material-ui/core/Avatar';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { tempChannels } from '../util/constant';
+import Loading from './Loading';
+import Avatar from '@material-ui/core/Avatar';
+import styled from 'styled-components';
 
 function Chat() {
-  const [seed, setSeed] = useState();
-  const [text, setText] = useState('');
-  const [chats, setChats] = useState('');
-  const [messages, setMessages] = useState([]);
   const { chatId } = useParams();
+  const [info, setInfo] = useState(tempChannels);
+  const [isLoading, setIsLoading] = useState(true);
+  const [input, setInput] = useState('');
+  const [message, setMessage] = useState([]);
 
-  const handleChange = (e) => {
-    setText(e.target.value);
-  };
+  console.log(message);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setText('');
-  };
-  useEffect(() => {
-    setSeed(Math.floor(Math.random() * 1000));
-  }, []);
+  const avatarImg = Math.floor(Math.random() * 70);
 
   useEffect(() => {
     if (chatId) {
-      db.collection('channels')
-        .doc(chatId)
-        .onSnapshot((snapchat) => {
-          setChats(snapchat.data().name);
-        });
+      console.log(chatId);
+      setIsLoading(true);
+      let timeout = setTimeout(() => {
+        setIsLoading(false);
+        getItem();
+      }, 800);
 
-      db.collection('channels')
-        .doc(chatId)
-        .collection('messages')
-        .orderBy('timestamp', 'asc')
-        .onSnapshot((snapshot) => {
-          console.log(snapshot.docs.map((doc) => doc.data()));
-          // setMessages(snapshot.docs.map((doc) => doc.data()));
-        });
+      return () => {
+        console.log('Clean up');
+        clearTimeout(timeout);
+      };
     }
   }, [chatId]);
+
+  const getItem = () => {
+    let singleItem = tempChannels.find((item) => item.id === parseInt(chatId));
+    setInfo(singleItem);
+  };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setMessage([...message, input]);
+
+    setInput('');
+  };
+
   return (
     <ChatStyled>
-      <div className='nav'>
-        <div className='nav__left'>
-          <div className='input__container'>
-            <input type='text' placeholder='search or start new chat' />
-            <RiSearch2Line />
+      {!isLoading && (
+        <>
+          <div className='header'>
+            <Avatar
+              alt={info.name}
+              src={`https://i.pravatar.cc/150?img=${avatarImg}`}
+            />
+
+            <h3 className='name'>{info.name}</h3>
+            <p className='last__seen'>
+              last seen <small>{info.last_seen}</small>
+            </p>
           </div>
-        </div>
-      </div>
-
-      <div className='header'>
-        <div className='info'>
-          <Avatar
-            src={`https://avatars.dicebear.com/4.5/api/human/${seed}.svg`}
-          />
-          <div className=''>
-            <Title4>{chats}</Title4>
-            <small>Last message</small>
+          <div className='body'>
+            <p className='message receiver'>Hi!!!</p>
+            <p className='message '>Yoo!</p>
+            {message.map((msg, _id) => (
+              <p className='message' key={_id}>
+                {msg}
+              </p>
+            ))}
           </div>
-        </div>
-        <div className='icons'>
-          <MdAttachFile />
-          <RiInformationLine className='info-icon' />
-        </div>
-      </div>
 
-      <div className='chat__body'>
-        {messages.map((msg) => console.log(msg))}
-        <p className='message reciever'>
-          Whats up!?
-          <small className='timestamp'>4:20 pm</small>
-        </p>
-        <p className='message'>Whats up!?</p>
-      </div>
-
-      <div className='chat__footer'>
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            placeholder="share what's on your mind"
-            value={text}
-            onChange={handleChange}
-          />
-          <button>Send</button>
-        </form>
-      </div>
+          <div className='footer'>
+            <form onSubmit={handleSubmit}>
+              <input
+                type='text'
+                placeholder='Say something '
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </form>
+          </div>
+        </>
+      )}
     </ChatStyled>
   );
 }
 
 const ChatStyled = styled.div`
-  svg {
-    font-size: 20px;
-    color: var(--secondary-color);
-    transition: var(--transition);
-    cursor: pointer;
-    &:hover {
-      color: var(--primary-color);
-    }
-  }
-  height: var(--full-height);
-  .nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: var(--border-1);
-    padding: 8px 10px;
-
-    .nav__left {
-      display: flex;
-      align-items: center;
-      /* margin-left: auto; */
-      width: 80%;
-      svg {
-        margin-left: 3px;
-      }
-      button {
-        background-color: transparent;
-        border: none;
-        outline: none;
-      }
-      .input__container {
-        background-color: var(--white);
-        display: flex;
-        align-items: center;
-        padding: 5px;
-        border-radius: var(--radius);
-        width: 100%;
-
-        input {
-          border: none;
-          outline: none;
-          padding: 10px;
-          /* border-radius: var(--radius); */
-          /* background-color: var(--white); */
-          background-color: transparent;
-          letter-spacing: var(--spacing);
-          width: 100%;
-        }
-      }
-    }
-  }
   .header {
+    background-color: var(--body-color);
+    padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: var(--white);
-    padding: 10px;
-    border-radius: var(--radius);
-    .info {
+    border: 1px solid var(--primary-color-light);
+
+    .name {
+      margin: 0 5px 0 25px;
+    }
+    .last__seen {
       display: flex;
-      div:last-child {
-        margin-left: 15px;
-      }
-    }
-  }
-
-  .chat__body {
-    position: relative;
-
-    padding-top: 40px;
-    .message {
-      background-color: #aca7ff;
-      padding: 10px;
-      border-radius: var(--radius);
-      width: fit-content;
-      margin-bottom: 25px;
-    }
-    .timestamp {
-      color: red;
-      font-size: x-small;
-      margin-left: 20px;
-    }
-
-    .reciever {
+      flex-direction: column;
       margin-left: auto;
-      background-color: var(--primary-color-light);
+      align-items: center;
+      text-transform: capitalize;
+
+      small {
+        font-size: x-small;
+      }
     }
   }
 
-  .chat__footer {
-    position: absolute;
-    bottom: 0;
-    width: 60%;
+  .body {
+    height: 64vh;
+    overflow: scroll;
+    .message {
+      background: var(--secondary-color);
+      margin: 10px 20px;
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: var(--radius);
+      color: var(--white);
+    }
+    .receiver {
+      margin-left: auto;
+      background: var(--black-text);
+    }
+  }
 
-    form {
-      input {
-        width: 100%;
-      }
-      button {
-        display: none;
-      }
+  .footer {
+    input {
+      width: 100%;
+      padding: 10px;
+      outline: none;
+      border: none;
+      border-radius: 1rem;
     }
   }
 `;

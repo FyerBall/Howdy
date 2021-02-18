@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import { Title4 } from '../Helpers/Titles';
 import styled from 'styled-components';
-import { db } from '../server/firebase';
 
 function Channels({ id, data }) {
   const name = data.name;

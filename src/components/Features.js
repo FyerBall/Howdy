@@ -5,7 +5,7 @@ import { Title3 } from '../Helpers/Titles';
 function Features() {
   return (
     <section className='section-center'>
-      <Title3 text='center' underline='primary--underline'>
+      <Title3 classes='center' underline='primary--underline'>
         Why use Howdy!
       </Title3>
       <Card />

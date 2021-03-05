@@ -1,7 +1,7 @@
-import React from 'react';
-import { Title4 } from '../Helpers/Titles';
-import { apps } from '../util/constant';
-import styled from 'styled-components';
+import React from 'react'
+import { Title4 } from '../Helpers/Titles'
+import { apps } from '../util/constant'
+import styled from 'styled-components'
 
 function Footer() {
   return (
@@ -17,11 +17,11 @@ function Footer() {
         ))}
       </div>
     </FooterStyled>
-  );
+  )
 }
 
 const FooterStyled = styled.footer`
-  margin: 30px auto 0;
+  margin: 10rem auto 0;
   padding: 5rem 0;
   text-align: center;
 
@@ -56,5 +56,5 @@ const FooterStyled = styled.footer`
       font-size: 30px;
     }
   }
-`;
-export default Footer;
+`
+export default Footer

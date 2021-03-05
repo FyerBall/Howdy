@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { tempChannels } from '../util/constant'
 import Loading from './Loading'
 import Avatar from '@material-ui/core/Avatar'
 import styled from 'styled-components'
@@ -67,7 +66,7 @@ function Chat() {
   return (
     <ChatStyled>
       {isLoading ? (
-        'Loading...'
+        <Loading />
       ) : (
         <>
           <div className='header'>
@@ -90,6 +89,7 @@ function Chat() {
                 </small>
               </p>
             ))}
+            <p className='message receiver'>Hey</p>
           </div>
           <div className='footer'>
             <input

@@ -1,57 +1,57 @@
-import React, { useState } from 'react';
-import logo from '../assets/Icon.svg';
-import { Title2, Title4 } from '../Helpers/Titles';
-import Button from '../Helpers/Button';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
-import Alert from '../Helpers/Alert';
+import React, { useState } from 'react'
+import logo from '../assets/Icon.svg'
+import { Title2, Title4 } from '../Helpers/Titles'
+import Button from '../Helpers/Button'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { FcGoogle } from 'react-icons/fc'
+import Alert from '../Helpers/Alert'
 
 function SigninPage() {
   let user = {
     email: '',
     password: '',
-  };
+  }
 
-  const [userInfo, setUserInfo] = useState(user);
+  const [userInfo, setUserInfo] = useState(user)
   const [alert, setAlert] = useState({
     show: false,
     message: '',
     type: '',
-  });
+  })
 
   const handleChange = (e) => {
-    e.preventDefault();
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
+    e.preventDefault()
+    const name = e.target.name
+    const value = e.target.value
+    setUserInfo({ ...userInfo, [name]: value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    checkForm();
-  };
+    e.preventDefault()
+    checkForm()
+  }
 
   const checkForm = () => {
-    isEmpty();
-    checkPassword();
-  };
+    isEmpty()
+    checkPassword()
+  }
   const isEmpty = () => {
     if (!userInfo.email.length || !userInfo.password.length) {
-      showAlert(true, 'please enter a your email and password ', 'danger');
+      showAlert(true, 'Redirecting to Demo the product', 'danger')
     }
-  };
+  }
 
   const checkPassword = () => {
     if (userInfo.password.length < 8) {
-      showAlert(true, 'password must be more than 8 char. ', 'danger');
+      showAlert(true, 'Redirecting to Demo the product', 'danger')
     }
-  };
+  }
 
   // ? DEFAULT ALERT
   const showAlert = (show = false, message = '', type = '') => {
-    setAlert({ show, message, type });
-  };
+    setAlert({ show, message, type })
+  }
 
   return (
     <SignupStyled>
@@ -95,7 +95,7 @@ function SigninPage() {
         Don't have an account? <Link to='/signin'>Sign Up</Link>
       </p>
     </SignupStyled>
-  );
+  )
 }
 
 const SignupStyled = styled.section`
@@ -158,5 +158,5 @@ const SignupStyled = styled.section`
       margin: 1rem auto;
     }
   }
-`;
-export default SigninPage;
+`
+export default SigninPage

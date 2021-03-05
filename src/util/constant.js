@@ -1,11 +1,11 @@
-import React from 'react';
-import { SiLetsencrypt } from 'react-icons/si';
-import { FcAdvertising } from 'react-icons/fc';
-import { MdMoneyOff } from 'react-icons/md';
-import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai';
-import { FaDyalog, FaRegEnvelopeOpen } from 'react-icons/fa';
-import { RiDraftLine } from 'react-icons/ri';
-import { BsFileBreak } from 'react-icons/bs';
+import React from 'react'
+import { SiLetsencrypt } from 'react-icons/si'
+import { FcAdvertising } from 'react-icons/fc'
+import { MdMoneyOff } from 'react-icons/md'
+import { AiFillApple, AiFillGoogleCircle } from 'react-icons/ai'
+import { FaDyalog, FaRegEnvelopeOpen } from 'react-icons/fa'
+import { RiDraftLine } from 'react-icons/ri'
+import { BsFileBreak } from 'react-icons/bs'
 
 // ? uuid??? Might be a good idea!
 export const navLinks = [
@@ -17,11 +17,11 @@ export const navLinks = [
   },
   {
     id: 2,
-    name: 'Try for free',
+    name: 'sign up',
     url: '/signup', //get-started
     type: 'primary',
   },
-];
+]
 
 export const features = [
   {
@@ -45,7 +45,7 @@ export const features = [
     info:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis',
   },
-];
+]
 
 export const apps = [
   {
@@ -56,7 +56,7 @@ export const apps = [
     id: 2,
     logo: <AiFillGoogleCircle />,
   },
-];
+]
 
 export const sideBarIcons = [
   {
@@ -83,7 +83,7 @@ export const sideBarIcons = [
     url: 'files',
     icon: <BsFileBreak />,
   },
-];
+]
 
 //? FOR TESTING!!
 export const tempChannels = [
@@ -102,4 +102,4 @@ export const tempChannels = [
     name: 'Ritthy ',
     last_seen: '2 days ago',
   },
-];
+]

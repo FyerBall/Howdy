@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from '../assets/Icon.svg';
-import styled from 'styled-components';
-import { navLinks } from '../util/constant';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import logo from '../assets/Icon.svg'
+import styled from 'styled-components'
+import { navLinks } from '../util/constant'
+import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
   return (
@@ -16,10 +16,10 @@ function Navbar() {
 
       <div className='links'>
         {navLinks.map((link) => {
-          const { id, name, url, type } = link;
+          const { id, name, url, type } = link
           return (
             <ul key={id} className=''>
-              <Link to={url}>
+              <NavLink activeClassName='active' to={url}>
                 <li
                   className={`${
                     type === 'primary' ? 'primary--btn btn' : 'btn'
@@ -27,13 +27,13 @@ function Navbar() {
                 >
                   {name}
                 </li>
-              </Link>
+              </NavLink>
             </ul>
-          );
+          )
         })}
       </div>
     </NavStyled>
-  );
+  )
 }
 
 const NavStyled = styled.nav`
@@ -64,12 +64,17 @@ const NavStyled = styled.nav`
     }
   }
 
+  .active {
+    /* color: red !important;
+    border-bottom: 1px solid red; */
+  }
+
   @media (max-width: 448px) {
     /* TODO: Menu bar rather than flex */
     .links {
       flex-direction: column;
     }
   }
-`;
+`
 
-export default Navbar;
+export default Navbar

@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
-import { Title4 } from '../Helpers/Titles';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Avatar from '@material-ui/core/Avatar'
+import { Title4 } from '../Helpers/Titles'
+import styled from 'styled-components'
 
 function Channels({ id, data }) {
-  const name = data.name;
-  const [seed, setSeed] = useState();
-
-  useEffect(() => {
-    setSeed(Math.floor(Math.random() * 1000));
-  }, []);
+  const name = data.name
 
   return (
     <ChannelsStyled>
@@ -22,7 +17,7 @@ function Channels({ id, data }) {
         </div>
       </Link>
     </ChannelsStyled>
-  );
+  )
 }
 
 const ChannelsStyled = styled.div`
@@ -50,6 +45,6 @@ const ChannelsStyled = styled.div`
       white-space: nowrap;
     }
   }
-`;
+`
 
-export default Channels;
+export default Channels

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Avatar from '@material-ui/core/Avatar'
@@ -19,8 +19,6 @@ function Contacts({ info }) {
 }
 
 const ContactsStyled = styled.ul`
-  /* font-size: 20px; */
-
   text-transform: capitalize;
   background-color: var(--white);
   margin: 0 auto 10px;

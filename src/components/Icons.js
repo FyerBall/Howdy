@@ -1,13 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 function Icons(item) {
-  const { name, icon, url } = item;
-
-  const tooltip = name.toUpperCase();
+  const { name, icon } = item
 
   return (
     // TODO Conditionally activate Material UI tooltip
@@ -15,20 +11,13 @@ function Icons(item) {
 
     <IconsStyled>
       <Link to={`/demo`}>
-        <Tooltip
-          title={tooltip}
-          placement='right'
-          arrow
-          TransitionComponent={Zoom}
-        >
-          <li className=''>
-            <span>{icon}</span>
-            <p>{name}</p>
-          </li>
-        </Tooltip>
+        <li className=''>
+          <span>{icon}</span>
+          <p>{name}</p>
+        </li>
       </Link>
     </IconsStyled>
-  );
+  )
 }
 
 const IconsStyled = styled.ul`
@@ -82,6 +71,6 @@ const IconsStyled = styled.ul`
       }
     }
   }
-`;
+`
 
-export default Icons;
+export default Icons

@@ -1,10 +1,10 @@
-import React from 'react';
-import img from '../assets/BG1.jpg';
-import HeroImg from '../assets/HeroImg.svg';
-import styled from 'styled-components';
-import Button from '../Helpers/Button';
-import { Title1 } from '../Helpers/Titles';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import img from '../assets/BG1.jpg'
+import HeroImg from '../assets/HeroImg.svg'
+import styled from 'styled-components'
+import Button from '../Helpers/Button'
+import { Title1 } from '../Helpers/Titles'
+import { Link } from 'react-router-dom'
 function Hero() {
   return (
     <HeroStyled className='section-center'>
@@ -25,7 +25,7 @@ function Hero() {
         </Link>
       </div>
     </HeroStyled>
-  );
+  )
 }
 
 const HeroStyled = styled.main`
@@ -84,5 +84,5 @@ const HeroStyled = styled.main`
       }
     }
   }
-`;
-export default Hero;
+`
+export default Hero

@@ -15,9 +15,7 @@ function Channels({ id, data }) {
   return (
     <ChannelsStyled>
       <Link to={`/demo/${id}`}>
-        <Avatar
-          src={`https://avatars.dicebear.com/4.5/api/human/${seed}.svg`}
-        />
+        <Avatar src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' />
         <div className='info'>
           <Title4>{name}</Title4>
           <small>Last message</small>

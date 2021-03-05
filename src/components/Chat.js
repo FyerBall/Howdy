@@ -1,93 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { tempChannels } from '../util/constant';
-import Loading from './Loading';
-import Avatar from '@material-ui/core/Avatar';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { tempChannels } from '../util/constant'
+import Loading from './Loading'
+import Avatar from '@material-ui/core/Avatar'
+import styled from 'styled-components'
+import { db } from '../server/firebase'
 
 function Chat() {
-  const { chatId } = useParams();
-  const [info, setInfo] = useState(tempChannels);
-  const [isLoading, setIsLoading] = useState(true);
-  const [input, setInput] = useState('');
-  const [message, setMessage] = useState([]);
+  const { chatId } = useParams()
 
-  console.log(message);
+  const [contact, setContact] = useState('')
 
-  const avatarImg = Math.floor(Math.random() * 70);
-
-  useEffect(() => {
+  const getContactInfo = () => {
     if (chatId) {
-      console.log(chatId);
-      setIsLoading(true);
-      let timeout = setTimeout(() => {
-        setIsLoading(false);
-        getItem();
-      }, 800);
-
-      return () => {
-        console.log('Clean up');
-        clearTimeout(timeout);
-      };
+      db.collection('people')
+        .doc(chatId)
+        .onSnapshot((snapshot) => {
+          setContact(snapshot.data())
+        })
     }
-  }, [chatId]);
-
-  const getItem = () => {
-    let singleItem = tempChannels.find((item) => item.id === parseInt(chatId));
-    setInfo(singleItem);
-  };
-
-  if (isLoading) {
-    return <Loading />;
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    getContactInfo()
 
-    setMessage([...message, input]);
-
-    setInput('');
-  };
+    return console.log('clean me')
+  }, [chatId])
 
   return (
     <ChatStyled>
-      {!isLoading && (
-        <>
-          <div className='header'>
-            <Avatar
-              alt={info.name}
-              src={`https://i.pravatar.cc/150?img=${avatarImg}`}
-            />
-
-            <h3 className='name'>{info.name}</h3>
-            <p className='last__seen'>
-              last seen <small>{info.last_seen}</small>
-            </p>
-          </div>
-          <div className='body'>
-            <p className='message receiver'>Hi!!!</p>
-            <p className='message '>Yoo!</p>
-            {message.map((msg, _id) => (
-              <p className='message' key={_id}>
-                {msg}
-              </p>
-            ))}
-          </div>
-
-          <div className='footer'>
-            <form onSubmit={handleSubmit}>
-              <input
-                type='text'
-                placeholder='Say something '
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </form>
-          </div>
-        </>
-      )}
+      <div className='header'>
+        <Avatar src={contact.avatar} alt={contact.name} />
+        <h3 className='name'>{contact.name}</h3>
+      </div>
     </ChatStyled>
-  );
+  )
 }
 
 const ChatStyled = styled.div`
@@ -140,5 +87,5 @@ const ChatStyled = styled.div`
       border-radius: 1rem;
     }
   }
-`;
-export default Chat;
+`
+export default Chat

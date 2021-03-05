@@ -1,27 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Avatar from '@material-ui/core/Avatar';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import Avatar from '@material-ui/core/Avatar'
 
-function Contacts(item) {
-  const { name, id } = item;
-
-  const avatarImg = Math.floor(Math.random() * 70);
-
+function Contacts({ info }) {
+  const { name, id, avatar } = info
   return (
     <ContactsStyled>
       <Link to={`/demo/${id}`}>
         <li>
-          <Avatar
-            alt={name}
-            src={`https://i.pravatar.cc/150?img=${avatarImg}`}
-          />
+          <Avatar alt={name} src={avatar} />
 
           <p>{name}</p>
         </li>
       </Link>
     </ContactsStyled>
-  );
+  )
 }
 
 const ContactsStyled = styled.ul`
@@ -68,6 +62,6 @@ const ContactsStyled = styled.ul`
       width: 100%;
     }
   }
-`;
+`
 
-export default Contacts;
+export default Contacts

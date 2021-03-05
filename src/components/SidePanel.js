@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { sideBarIcons } from '../util/constant'
 import Contacts from './Contacts'
 import Icons from './Icons'
 import styled from 'styled-components'
-import { db } from '../server/firebase'
 
 function SidePanel({ contact }) {
   const addChannel = () => {

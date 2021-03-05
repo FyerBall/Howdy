@@ -5,24 +5,7 @@ import Icons from './Icons'
 import styled from 'styled-components'
 import { db } from '../server/firebase'
 
-function SidePanel() {
-  const [contact, setContact] = useState([])
-
-  useEffect(() => {
-    db.collection('people').onSnapshot((snapshot) => {
-      setContact(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          name: doc.data().name,
-          avatar: doc.data().avatar,
-        }))
-      )
-    })
-    return () => {
-      console.log('clean up')
-    }
-  }, [])
-
+function SidePanel({ contact }) {
   const addChannel = () => {
     // let createChannel = prompt('Add Channel')
     // setContact(createChannel)

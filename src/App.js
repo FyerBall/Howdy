@@ -11,6 +11,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { useEffect } from 'react'
 
+// react-router scroll to top on every transition
 function _ScrollToTop(props) {
   const { pathname } = useLocation()
   useEffect(() => {

@@ -36,7 +36,7 @@ This is a real time messaging app, _one way_, where the messages are stored in F
   - —— Today ———
     - texts…. 12pm
     - texts…. 1pm
-- useContext
+
 
 ### Contact
 

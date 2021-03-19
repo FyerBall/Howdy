@@ -26,14 +26,14 @@ This is a real time messaging app, _one way_, where the messages are stored in F
 
 ### Things I would like to do
 
--[] Auth, sign in, sign up.
--[] 2 way communication
--[] Online or last seen status
--[] Attach images
--[] Show dates of the text
-texts…. date and time
--[] Group dates
-———— Today ———
-texts…. 12pm
-texts…. 1pm
--[] useContext
+- Auth, sign in, sign up.
+- 2 way communication
+- Online or last seen status
+- Attach images
+- Show dates of the text
+  - texts…. date and time
+  - Group dates
+- —— Today ———
+- texts…. 12pm
+- texts…. 1pm
+- useContext

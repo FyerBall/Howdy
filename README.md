@@ -33,7 +33,16 @@ This is a real time messaging app, _one way_, where the messages are stored in F
 - Show dates of the text
   - texts…. date and time
   - Group dates
-- —— Today ———
-- texts…. 12pm
-- texts…. 1pm
+  - —— Today ———
+    - texts…. 12pm
+    - texts…. 1pm
 - useContext
+
+### Contact
+
+[Meshari](mailto:meshari@meshariabid.com?subject=[GitHub])
+
+### Links
+
+[Live](https://howdy-db709.web.app)
+[Source code](https://github.com/FyerBall/Howdy)

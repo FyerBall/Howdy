@@ -1,3 +1,9 @@
+### Links
+
+[Live](https://howdy-db709.web.app) \
+[Source code](https://github.com/FyerBall/Howdy)
+
+
 # Howdy - a chat app
 
 ### Overview
@@ -43,7 +49,4 @@ This is a real time messaging app, _one way_, where the messages are stored in F
 [Email me](mailto:meshari@meshariabid.com?subject=[GitHub]) \
 [Portfolio](https://meshariabid.com/)
 
-### Links
 
-[Live](https://howdy-db709.web.app) \
-[Source code](https://github.com/FyerBall/Howdy)
